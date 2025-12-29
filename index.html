@@ -1,30 +1,72 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Harry Potter Quiz</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <style>
-    body { font-family: Arial, sans-serif; background: #f0f0f5; padding: 20px; }
-    h1 { text-align: center; }
-    .question { margin: 15px 0; padding: 10px; background: #fff; border-radius: 5px; }
-    button { margin: 5px; padding: 5px 10px; cursor: pointer; }
-    .correct { background: #c8f7c5; }
-    .wrong { background: #f7c5c5; }
-    #score { font-size: 1.2em; margin-top: 20px; text-align: center; }
-  </style>
+<meta charset="UTF-8">
+<title>Harry Potter Quiz</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+body { font-family: Arial, sans-serif; background:#f0f0f5; padding:20px; }
+h1 { text-align:center; }
+.question { background:#fff; padding:15px; margin:15px 0; border-radius:6px; }
+.answers button {
+  display:block;
+  width:100%;
+  margin:6px 0;
+  padding:10px;
+  cursor:pointer;
+}
+.selected { border:2px solid #333; }
+.correct { background:#c8f7c5; }
+.wrong { background:#f7c5c5; }
+#submit { padding:12px 20px; font-size:16px; display:block; margin:20px auto; }
+#score { text-align:center; font-size:22px; margin-top:20px; }
+</style>
 </head>
+
 <body>
 
-<h1>Harry Potter Quiz</h1>
+<h1>Harry Potter and the Philosopher's Stone Quiz</h1>
 <div id="quiz"></div>
-<button id="submit">Submit</button>
+<button id="submit">Submit Quiz</button>
 <div id="score"></div>
 
 <script>
 const quizData = [
-  {q:"Who is Harry Potter's best friend?", a:["Hermione","Ron","Draco","Neville"], c:1, p:5},
-  {q:"What house is Harry sorted into?", a:["Slytherin","Ravenclaw","Hufflepuff","Gryffindor"], c:3, p:5}
+/* EASY – 5 POINTS */
+{q:"Who is Harry Potter's best friend?", a:["Hermione","Ron","Draco","Neville"], c:1, p:5},
+{q:"What house is Harry sorted into?", a:["Slytherin","Ravenclaw","Hufflepuff","Gryffindor"], c:3, p:5},
+{q:"Who delivers Harry’s Hogwarts letter?", a:["Dumbledore","McGonagall","Hagrid","Snape"], c:2, p:5},
+{q:"What is the name of Harry’s owl?", a:["Errol","Crookshanks","Hedwig","Scabbers"], c:2, p:5},
+{q:"What position does Harry play in Quidditch?", a:["Chaser","Keeper","Seeker","Beater"], c:2, p:5},
+{q:"What platform does the Hogwarts Express leave from?", a:["9","9¾","10","8½"], c:1, p:5},
+{q:"Who is the headmaster of Hogwarts?", a:["Snape","Dumbledore","Hagrid","Filch"], c:1, p:5},
+{q:"What sport do wizards play on brooms?", a:["Gobstones","Wizard Chess","Quidditch","Duelling"], c:2, p:5},
+{q:"What is Harry famous for?", a:["Being rich","Being smart","Surviving Voldemort","Winning Quidditch"], c:2, p:5},
+{q:"What is Hagrid’s job?", a:["Teacher","Caretaker","Gamekeeper","Auror"], c:2, p:5},
+
+/* MEDIUM – 8 POINTS */
+{q:"What creature guards the Philosopher’s Stone?", a:["Dragon","Troll","Three-headed dog","Basilisk"], c:2, p:8},
+{q:"What is the name of the three-headed dog?", a:["Fang","Fluffy","Norbert","Aragog"], c:1, p:8},
+{q:"Who teaches Potions?", a:["Flitwick","McGonagall","Snape","Sprout"], c:2, p:8},
+{q:"What spell unlocks doors?", a:["Alohomora","Expelliarmus","Lumos","Accio"], c:0, p:8},
+{q:"What does Hermione use to trap the Devil’s Snare?", a:["Water","Fire","Wind","Magic rope"], c:1, p:8},
+{q:"Who wins the giant chess match?", a:["Harry","Hermione","Ron","Dumbledore"], c:2, p:8},
+{q:"What flavour Bertie Bott’s Bean does Dumbledore mention?", a:["Soap","Spinach","Earwax","Fish"], c:2, p:8},
+{q:"Who is the Hogwarts flying instructor?", a:["Snape","Hooch","Filch","Sprout"], c:1, p:8},
+{q:"What broom does Harry receive?", a:["Nimbus 2000","Nimbus 2001","Firebolt","Cleansweep"], c:0, p:8},
+{q:"What mirror shows deepest desires?", a:["Mirror of Fate","Mirror of Truth","Mirror of Erised","Mirror of Souls"], c:2, p:8},
+
+/* HARD – 10 POINTS */
+{q:"What does ‘Erised’ spell backwards?", a:["Desire","Reside","Dream","Wizard"], c:0, p:10},
+{q:"Who tries to steal the Philosopher’s Stone?", a:["Snape","Voldemort","Quirrell","Lucius"], c:2, p:10},
+{q:"Where is Nicolas Flamel from?", a:["England","France","Italy","Spain"], c:1, p:10},
+{q:"How old is Nicolas Flamel?", a:["500+","600+","700+","800+"], c:2, p:10},
+{q:"What protects Harry from Quirrell?", a:["Spell","Love","Wand","Cloak"], c:1, p:10},
+{q:"What is Voldemort drinking in the forest?", a:["Unicorn blood","Dragon blood","Potion","Elixir"], c:0, p:10},
+{q:"Who lets the troll into Hogwarts?", a:["Snape","Quirrell","Malfoy","Filch"], c:1, p:10},
+{q:"What vault number holds the Stone?", a:["687","713","394","666"], c:1, p:10},
+{q:"What centaur warns Harry in the forest?", a:["Firenze","Bane","Ronan","Mars"], c:0, p:10},
+{q:"Why can Harry retrieve the Stone?", a:["Skill","Luck","Pure intention","Magic blood"], c:2, p:10}
 ];
 
 const quiz = document.getElementById("quiz");
@@ -33,22 +75,37 @@ const answers = [];
 quizData.forEach((q, i) => {
   const div = document.createElement("div");
   div.className = "question";
-  div.innerHTML = `<b>${q.q}</b><br>`;
-  q.a.forEach((ans, idx) => {
-    const b = document.createElement("button");
-    b.textContent = ans;
-    b.onclick = () => answers[i] = idx;
-    div.appendChild(b);
+  div.innerHTML = `<b>Q${i+1}. ${q.q}</b>`;
+  const ans = document.createElement("div");
+  ans.className = "answers";
+
+  q.a.forEach((text, idx) => {
+    const btn = document.createElement("button");
+    btn.textContent = text;
+    btn.onclick = () => {
+      answers[i] = idx;
+      [...ans.children].forEach(b => b.classList.remove("selected"));
+      btn.classList.add("selected");
+    };
+    ans.appendChild(btn);
   });
+
+  div.appendChild(ans);
   quiz.appendChild(div);
 });
 
 document.getElementById("submit").onclick = () => {
   let score = 0;
   quizData.forEach((q, i) => {
+    const buttons = quiz.children[i].querySelectorAll("button");
+    buttons.forEach((b, idx) => {
+      b.disabled = true;
+      if (idx === q.c) b.classList.add("correct");
+      if (idx === answers[i] && idx !== q.c) b.classList.add("wrong");
+    });
     if (answers[i] === q.c) score += q.p;
   });
-  document.getElementById("score").innerText = "Score: " + score;
+  document.getElementById("score").innerText = `Final Score: ${score} / 230`;
 };
 </script>
 
