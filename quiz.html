@@ -1,0 +1,89 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta http-equiv="Content-Style-Type" content="text/css">
+  <title></title>
+  <meta name="Generator" content="Cocoa HTML Writer">
+  <meta name="CocoaVersion" content="2575.7">
+  <style type="text/css">
+    p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica; -webkit-text-stroke: #000000}
+    p.p2 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica; -webkit-text-stroke: #000000; min-height: 14.0px}
+    span.s1 {font-kerning: none}
+  </style>
+</head>
+<body>
+<p class="p1"><span class="s1">&lt;!DOCTYPE html&gt;</span></p>
+<p class="p1"><span class="s1">&lt;html lang="en"&gt;</span></p>
+<p class="p1"><span class="s1">&lt;head&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>&lt;meta charset="UTF-8"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>&lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>&lt;title&gt;Harry Potter Quiz&lt;/title&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>&lt;style&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>body { font-family: Arial, sans-serif; background: #f0f0f5; padding: 20px; }</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>h1 { text-align: center; }</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>.question { margin: 15px 0; padding: 10px; background: #fff; border-radius: 5px; }</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>button { margin: 5px; padding: 5px 10px; cursor: pointer; border-radius: 3px; }</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>.correct { background-color: #c8f7c5; }</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>.wrong { background-color: #f7c5c5; }</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>#submit { margin-top: 20px; padding: 10px 20px; font-size: 1.1em; }</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>#score { font-size: 1.2em; margin-top: 20px; text-align: center; }</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>&lt;/style&gt;</span></p>
+<p class="p1"><span class="s1">&lt;/head&gt;</span></p>
+<p class="p1"><span class="s1">&lt;body&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>&lt;h1&gt;Harry Potter and the Philosopher's Stone Quiz&lt;/h1&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>&lt;div id="quiz"&gt;&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>&lt;button id="submit"&gt;Submit Quiz&lt;/button&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>&lt;div id="score"&gt;&lt;/div&gt;</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>&lt;script&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>const quizData = [</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>{q:"Who is Harry Potter's best friend?", a:["Hermione","Ron","Draco","Neville"], correct:1, points:5},</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>{q:"What house is Harry sorted into?", a:["Slytherin","Ravenclaw","Hufflepuff","Gryffindor"], correct:3, points:5},</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>{q:"Who delivers Harry's Hogwarts letter?", a:["Hagrid","Dumbledore","McGonagall","Voldemort"], correct:0, points:5},</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>{q:"What position does Harry play in Quidditch?", a:["Seeker","Chaser","Keeper","Beater"], correct:0, points:5},</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>{q:"Who is the headmaster of Hogwarts?", a:["Snape","Dumbledore","Hagrid","Filch"], correct:1, points:5},</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>{q:"What is the name of Harry's owl?", a:["Crookshanks","Hedwig","Scabbers","Errol"], correct:1, points:5},</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>{q:"What creature guards the Philosopher's Stone?", a:["Dragon","Troll","Fluffy","Basilisk"], correct:2, points:5},</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>{q:"Who teaches Potions?", a:["Snape","McGonagall","Hagrid","Flitwick"], correct:0, points:5},</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>{q:"What does Harry buy first in Diagon Alley?", a:["Wand","Broomstick","Cloak","Cauldron"], correct:0, points:5},</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>{q:"Name of Hogwarts train?", a:["Express","Hogwarts Express","Magic Train","Wizard Express"], correct:1, points:5}</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>// ... add remaining questions</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>];</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>const quizDiv = document.getElementById('quiz');</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>const userAnswers = [];</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>quizData.forEach((q, idx) =&gt; {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>const qDiv = document.createElement('div');</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>qDiv.className = 'question';</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>qDiv.innerHTML = `&lt;b&gt;Q${idx+1}: ${q.q}&lt;/b&gt;&lt;br&gt;`;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>q.a.forEach((ans, i) =&gt; {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>const btn = document.createElement('button');</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>btn.textContent = ans;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>btn.onclick = () =&gt; { userAnswers[idx] = i; btn.style.border = "2px solid #000"; };</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>qDiv.appendChild(btn);</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>});</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>quizDiv.appendChild(qDiv);</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>});</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>document.getElementById('submit').onclick = () =&gt; {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>let score = 0;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>quizDiv.querySelectorAll('.question').forEach((qDiv, idx) =&gt; {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>const correctIndex = quizData[idx].correct;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>const buttons = qDiv.querySelectorAll('button');</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>const chosen = userAnswers[idx];</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>if(chosen === correctIndex) score += quizData[idx].points;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>buttons.forEach((b, i) =&gt; {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">          </span>b.disabled = true;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">          </span>if(i === correctIndex) b.classList.add('correct');</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">          </span>else if(i === chosen &amp;&amp; chosen !== correctIndex) b.classList.add('wrong');</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>});</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>});</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>document.getElementById('score').innerText = `Your total score is: ${score}`;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>};</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>&lt;/script&gt;</span></p>
+<p class="p1"><span class="s1">&lt;/body&gt;</span></p>
+<p class="p1"><span class="s1">&lt;/html&gt;</span></p>
+</body>
+</html>
